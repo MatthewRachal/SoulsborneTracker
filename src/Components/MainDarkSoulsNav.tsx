@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 
 interface Props {
-    selectGame: any;
+    selectGame: (game: string) => void;
 }
 
 export default function MainDarkSoulsNav(props: Props): ReactElement {

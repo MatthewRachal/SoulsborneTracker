@@ -3,13 +3,13 @@ import React from 'react'
 interface Props {
     info: any;
     pos: number;
-    changeData: any;
+    changeData:  (type: string, value: number, index: number) => void;
 }
 
 export default function Boss(props: Props) {
        
         const createDifficultyButtons = (): any => {
-            let num = [0,1,2,3,4,5,6,7,8,9,10];
+            let num:number[] = [0,1,2,3,4,5,6,7,8,9,10];
             return num.map((item,index) => {
                 return (
                     <button key={index} 
@@ -35,3 +35,5 @@ export default function Boss(props: Props) {
         </div>
     )
 }
+
+

@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
+import {summaryData} from "./Dashboard"
 
 interface Props {
-    summaryData: any;
+    summaryData: summaryData;
     game: string;
 }
 

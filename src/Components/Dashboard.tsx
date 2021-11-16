@@ -9,7 +9,7 @@ interface Props {
     
 }
 
-interface initialSummaryData {
+export interface summaryData {
     totalDeaths: number;
     totalBossDeaths: number,
     totalZoneDeaths: number,
@@ -17,9 +17,24 @@ interface initialSummaryData {
     bossNum: number, 
 }
 
+export interface bossInfo {
+    name: string;
+    difficulty: number;
+    deaths: number;
+    completed: boolean;
+    imgURL?: string;
+}
+
+export interface zoneInfo {
+    name: string;
+    deaths: number;
+    difficulty: number;
+    imgURL?: string;
+}
+
 export default function Dashboard({}: Props) {
 
-    let bossInfoDS1 = [
+    let bossInfoDS1: bossInfo[] = [
         {name: "Asylum Demon", difficulty: 0, deaths: 0, completed: false, imgURL: ""},
         {name: "Taurus Demon", difficulty: 0, deaths: 0, completed: false, imgURL: ""},
         {name: "Bell Gargoyles", difficulty: 0, deaths: 0, completed: false, imgURL: ""},
@@ -48,38 +63,38 @@ export default function Dashboard({}: Props) {
         {name: "Gwyn, Lord of Cinder", difficulty: 0, deaths: 0, completed: false, imgURL: ""},
 
     ];
-    let zonesInfoDS1 = [
-        {name: "Northern Undead Asylum", deaths: 0, difficulty: 0},
-        {name: "FireLink Shrine", deaths: 0, difficulty: 0},
-        {name: "Northern Undead Undead Burg", deaths: 0, difficulty: 0},
-        {name: "Undead Parish", deaths: 0, difficulty: 0},
-        {name: "Depths", deaths: 0, difficulty: 0},
+    let zonesInfoDS1: zoneInfo[] = [
+        {name: "Northern Undead Asylum", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "FireLink Shrine", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Northern Undead Undead Burg", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Undead Parish", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Depths", deaths: 0, difficulty: 0, imgURL: ""},
         {name: "BlightTown", deaths: 0, difficulty: 0},
-        {name: "Quelaag's Domain", deaths: 0, difficulty: 0},
-        {name: "The Great Hollow", deaths: 0, difficulty: 0},
-        {name: "Ash Lake", deaths: 0, difficulty: 0},
-        {name: "Darkroot Basin", deaths: 0, difficulty: 0},
-        {name: "The Valley of the Drakes", deaths: 0, difficulty: 0},
-        {name: "Sen's Fortress", deaths: 0, difficulty: 0},
-        {name: "Anor Londo", deaths: 0, difficulty: 0},
-        {name: "Painted World of Ariamis", deaths: 0, difficulty: 0},
-        {name: "Darkroot Garden", deaths: 0, difficulty: 0},
-        {name: "New Londo Ruins", deaths: 0, difficulty: 0},
-        {name: "The Duke's Archives", deaths: 0, difficulty: 0},
-        {name: "Crystal Cave", deaths: 0, difficulty: 0},
-        {name: "Demon Ruins", deaths: 0, difficulty: 0},
-        {name: "Lost Izalith", deaths: 0, difficulty: 0},
-        {name: "The Catacombs", deaths: 0, difficulty: 0},
-        {name: "Tomb of Giants", deaths: 0, difficulty: 0},
-        {name: "Sanctuary Garden", deaths: 0, difficulty: 0},
-        {name: "Oolacile Sanctuary", deaths: 0, difficulty: 0},
-        {name: "Royal Wood", deaths: 0, difficulty: 0},
-        {name: "Oolacile Township", deaths: 0, difficulty: 0},
-        {name: "Chasam of the Abyss", deaths: 0, difficulty: 0},
-        {name: "Kiln of the First Flame", deaths: 0, difficulty: 0},
+        {name: "Quelaag's Domain", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "The Great Hollow", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Ash Lake", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Darkroot Basin", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "The Valley of the Drakes", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Sen's Fortress", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Anor Londo", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Painted World of Ariamis", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Darkroot Garden", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "New Londo Ruins", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "The Duke's Archives", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Crystal Cave", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Demon Ruins", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Lost Izalith", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "The Catacombs", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Tomb of Giants", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Sanctuary Garden", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Oolacile Sanctuary", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Royal Wood", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Oolacile Township", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Chasam of the Abyss", deaths: 0, difficulty: 0, imgURL: ""},
+        {name: "Kiln of the First Flame", deaths: 0, difficulty: 0, imgURL: ""},
     ];
     
-    let initialSummaryDataDS1 = {
+    let initialSummaryDataDS1:summaryData = {
         totalDeaths: 0,
         totalBossDeaths: 0,
         totalZoneDeaths: 0,
@@ -87,27 +102,26 @@ export default function Dashboard({}: Props) {
         bossNum: 26, 
     }
     
-    const [bosses, updatedBosses] = useState(bossInfoDS1);
-    const [zones, updatedZones] = useState(zonesInfoDS1);
-    const [summaryData, setSummaryData] = useState<initialSummaryData>(initialSummaryDataDS1);
+    const [bosses, updatedBosses] = useState<bossInfo[]>(bossInfoDS1);
+    const [zones, updatedZones] = useState<zoneInfo[]>(zonesInfoDS1);
+    const [summaryData, setSummaryData] = useState<summaryData>(initialSummaryDataDS1);
     const [counterType, setCounterType] = useState<string>("Bosses")
     const [game, selectGame] = useState<string>("Dark Souls 1");
 
     useEffect(() => {
-        console.log("in use effect")
         updateSummaryData();
     })
 
 
-    const changeCounterType = (value:string): any => {
+    const changeCounterType = (value:string): void => {
         setCounterType(value);
     }
 
     
     const changeData = (type: string, value: number, index: number): void => {
 
-        let newBosses = [...bosses];
-        let newZones = [...zones];
+        let newBosses: bossInfo[] = [...bosses];
+        let newZones: zoneInfo[] = [...zones];
         
         // ------- Bosses -------
         //No Negative Numbers and no numbers greater than 999,999
@@ -151,14 +165,14 @@ export default function Dashboard({}: Props) {
     //Updates the Summary Data
     const updateSummaryData = (): void => {
         //Reset and calculate the summary data
-        let newSummaryData = {
+        let newSummaryData:summaryData = {
             totalDeaths: 0,
             totalBossDeaths: 0,
             totalZoneDeaths: 0,
             BossCompleted: 0,
             bossNum: 0, 
         }
-        let counter = 0;
+        let counter:number = 0;
         for(counter=0;counter<bosses.length;counter++)
         {
             newSummaryData.totalDeaths = newSummaryData.totalDeaths + bosses[counter].deaths 
@@ -167,7 +181,7 @@ export default function Dashboard({}: Props) {
     }
 
  
-    const generateBosses = (): any => {
+    const generateBosses = (): any[] => {
         
         return bosses.map((item,index) => {
             return (
@@ -178,7 +192,7 @@ export default function Dashboard({}: Props) {
         })
     }
 
-    const generateZones = (): any => {
+    const generateZones = (): any[] => {
 
         return zones.map((item,index) => {
             return (
