@@ -181,8 +181,7 @@ export default function Dashboard({}: Props) {
     }
 
  
-    const generateBosses = (): any[] => {
-        
+    const generateBosses = (): any[] => {  
         return bosses.map((item,index) => {
             return (
                 <div key={index}>
@@ -193,7 +192,6 @@ export default function Dashboard({}: Props) {
     }
 
     const generateZones = (): any[] => {
-
         return zones.map((item,index) => {
             return (
                 <div key={index}>
